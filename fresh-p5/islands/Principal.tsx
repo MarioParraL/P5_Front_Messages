@@ -89,7 +89,7 @@ const Principal: FunctionalComponent = () => {
   }, []);
 
   useEffect(() => {
-    const container = document.querySelector("messagesContainer");
+    const container = document.querySelector(".messagesContainer");
     if (container) container.scrollTop = container.scrollHeight;
   }, [messages]);
 
