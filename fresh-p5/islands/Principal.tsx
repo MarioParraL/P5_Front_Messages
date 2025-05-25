@@ -27,10 +27,9 @@ const Principal: FunctionalComponent = () => {
 
   const getContacts = async () => {
     try {
-      const response = await Axios.get(
-        "https://back-a-p4.onrender.com/contacts",
-      );
-      setContacts(response.data.data);
+      const res = await fetch("https://back-a-p4.onrender.com/contacts");
+      const json = await res.json();
+      setContacts(json.data);
     } catch (e) {
       console.error("Error en el fetch de contactos", e);
     }
@@ -38,11 +37,11 @@ const Principal: FunctionalComponent = () => {
 
   const getMessages = async (chatId: string) => {
     try {
-      const res = await Axios.get(
+      const res = await fetch(
         `https://back-a-p4.onrender.com/messages/chat/${chatId}`,
       );
-
-      setMessages(res.data.data);
+      const json = await res.json();
+      setMessages(json.data);
     } catch (e) {
       console.error("Error haciendo el fetch de mensajes", e);
     }
